@@ -3,7 +3,7 @@ $(call inherit-product, device/samsung/mondrianwifi/full_mondrianwifi.mk)
 $(call inherit-product, vendor/plain/config/common.mk)
 
 # Aroma installer device overlay
-#Remove this once finished# $(call inherit-product, device/samsung/mondrianwifi/aroma/aroma.mk)
+$(call inherit-product, device/samsung/mondrianwifi/aroma/aroma.mk)
 
 # Boot animation
 PRODUCT_COPY_FILES += \
