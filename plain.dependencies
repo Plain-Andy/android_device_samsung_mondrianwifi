@@ -1,0 +1,13 @@
+[
+  {
+    "repository":	"android_kernel_samsung_mondrianwifi",
+    "target_path":	"kernel/samsung/mondrianwifi",
+    "revision":		"cm-11.0"
+  },
+  {
+    "remote:		"gh",
+    "repository":	"TheMuppets/proprietary_vendor_samsung",
+    "target_path":	"proprietary/vendor/samsung",
+    "revision":		"cm-11.0"
+  }
+]
