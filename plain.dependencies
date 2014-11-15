@@ -1,8 +1,7 @@
 [
   {
     "repository":	"android_kernel_samsung_mondrianwifi",
-    "target_path":	"kernel/samsung/mondrianwifi",
-    "revision":		"cm-11.0"
+    "target_path":	"kernel/samsung/mondrianwifi"
   },
   {
     "remote:		"gh",
