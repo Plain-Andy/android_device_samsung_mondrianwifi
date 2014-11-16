@@ -1,6 +1,6 @@
 PRODUCT_COPY_FILES += \
 	device/samsung/mondrianwifi/aroma/aroma-device-config:aroma-device-config \
-	device/samsung/mondrianwifi/aroma/aroma-device-config:aroma-device-script
+	device/samsung/mondrianwifi/aroma/aroma-device-script:aroma-device-script \
 	device/samsung/mondrianwifi/aroma/aroma_device_files/deviceconfig.sh:aroma_device/deviceconfig.sh
 
 #PRODUCT_COPY_FILES += \
