@@ -1,0 +1,31 @@
+<@center><u>MaxKhz  MinKhz  Governor  Scheduler</u>
+
+<b><u>Gamer</u></b>
+2.26Ghz  300Mhz  Intellidemand  FIOPS
+Cores 3/4
+<*>No changes</*>
+<b>TCP Congestion Control:</b> Westwood
+
+<b><u>Battery Saver</u></b>
+1.72Ghz  300Mhz  Optimax  Deadline
+Cores 3/4
+<*>Maxkhz: 2.26ghz Governor: Interactive</*>
+<b>TCP Congestion Control:</b> Westwood
+
+<b><u>All-Around</u></b>
+1.95Ghz  300mhz  Intelliactive  SIO
+Cores 3/4
+<*>No Changes</*>
+<b>TCP Congestion Control:</b> Cubic
+
+<b><u>Super Smooth</u></b>
+2.26Ghz  300Mhz  Optimax  FIOPS
+Cores 3/4
+<*>No changes</*>
+<b>TCP Congestion Control:</b> HighSpeed
+
+<b><u>Kernel Defaults</u></b>
+2.26Ghz  300Mhz  Interactive  SIO
+Cores 3/4
+<*>No changes</*>
+<b>TCP Congestion Control:</b> Westwood</@>
