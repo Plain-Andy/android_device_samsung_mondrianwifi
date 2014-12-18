@@ -1,0 +1,519 @@
+menubox(
+    "Plain-Tweaks Customization",
+    "Plain-Tweaks file setup",
+    "@personalize",
+    "ptconfig.prop",
+	"Dont Overwrite Current Tweaks",   "Skip Plain-Tweak configuration\nleaving your current one intact", "icons/apps",
+	"Setup Plain-Tweak",   "Reset current configuration", "icons/apps",
+	"Remove Plain-Tweak",   "Remove current configuration", "icons/apps",
+	"Skip This Step",   " ", "icons/apps"
+);
+if
+file_getprop("/tmp/aroma-data/ptconfig.prop","selected") == "2"
+then
+textdialog(
+    "<@center>Plain-Tweak Presets</@>",
+    zipread("aroma_device/presets.txt")
+);
+selectbox(
+	"Plain-Tweak configuration",
+	"Please select a preset or customize",
+	"@personalize",
+	"customize.prop",
+
+	"Choose a preset or customize","",	2,	#-- Group 1		
+	"Gamer",		"",	1,	#-- item.1.1
+	"Battery Saver",	"",	0,	#-- item.1.2
+	"All-Around",		"",	0,	#-- item.1.3
+	"Super-Smooth",		"",	0,	#-- item.1.4
+	"Kernel Defaults",	"",	0,	#-- item.1.5
+	"Customize",		"Proceed to full customization . . .",	0	#-- item.1.5
+);
+if
+file_getprop("/tmp/aroma-data/customize.prop","selected.1") == "1"
+then
+writetmpfile("deviceconfig.prop",
+	"selected.1=1\n"+
+	"selected.2=1\n"+
+	"selected.3=4\n"+
+	"selected.4=5\n"+
+	"selected.5=1\n"
+);
+endif;
+
+if
+file_getprop("/tmp/aroma-data/customize.prop","selected.1") == "2"
+then
+writetmpfile("deviceconfig.prop",
+	"selected.1=3\n"+
+	"selected.2=1\n"+
+	"selected.3=1\n"+
+	"selected.4=2\n"+
+	"selected.5=1\n"+
+	"selected.6=1\n"+
+	"selected.7=1\n"+
+	"selected.8=7\n"
+);
+endif;
+
+if
+file_getprop("/tmp/aroma-data/customize.prop","selected.1") == "3"
+then
+writetmpfile("deviceconfig.prop",
+	"selected.1=2\n"+
+	"selected.2=1\n"+
+	"selected.3=3\n"+
+	"selected.4=5\n"+
+	"selected.5=4\n"
+);
+endif;
+
+if
+file_getprop("/tmp/aroma-data/customize.prop","selected.1") == "4"
+then
+writetmpfile("deviceconfig.prop",
+	"selected.1=1\n"+
+	"selected.2=1\n"+
+	"selected.3=1\n"+
+	"selected.4=5\n"+
+	"selected.5=5\n"
+);
+endif;
+
+if
+file_getprop("/tmp/aroma-data/customize.prop","selected.1") == "5"
+then
+writetmpfile("deviceconfig.prop",
+	"selected.1=1\n"+
+	"selected.2=1\n"+
+	"selected.3=7\n"+
+	"selected.4=5\n"+
+	"selected.5=1\n"
+);
+endif;
+
+if
+file_getprop("/tmp/aroma-data/customize.prop","selected.1") == "6"
+then
+selectbox(
+	"Plain-Tweak configuration",
+	"Please select kernel values",
+	"@personalize",
+	"deviceconfig.prop",
+
+	"Cores 1 & 2: Maximum cpu clockrate","",	2,	#-- Group 1		
+	"2.26Ghz",		"",	0,	#-- item.1.1
+	"1.95Ghz",		"",	0,	#-- item.1.2
+	"1.72Ghz",		"",	0,	#-- item.1.3
+	"1.57Ghz",		"",	0,	#-- item.1.4
+	"1.49Ghz",		"",	0,	#-- item.1.5
+	"Kernel Default",	"",	1,
+
+	"Cores 1 & 2: Minimum cpu clockrate","",	2,	#-- Group 2		
+	"300Mhz",		"",	0,	#-- item 2.1
+	"345Mhz",		"",	0,	#-- item 2.2
+	"422Mhz",		"",	0,	#-- item 2.2
+	"653Mhz",		"",	0,	#-- item 2.2
+	"Kernel Default",	"",	1,
+
+	"Cores 1 & 2: Governor selection",	"",	2,	#-- Group 3
+	"optimax",		"",	0,	#-- item 3.1
+	"dancedance",		"",	0,	#-- item 3.2
+	"intelliactive",	"",	0,	#-- item 3.3
+	"intellidemand",	"",	0,	#-- item 3.4
+	"conservative",		"",	0,	#-- item 3.5
+	"ondemand",		"",	0,	#-- item 3.6
+	"interactive",		"",	0,	#-- item 3.7
+	"Kernel Default",	"",	1,
+
+	"IO Scheduler selection","",	2,	#-- Group 4
+	"noop",			"",	0,	#-- item 4.1
+	"deadline",		"",	0,	#-- item 4.1
+	"row",			"",	0,	#-- item 4.1
+	"cfq",			"",	0,	#-- item 4.1
+	"sio",			"",	0,	#-- item 4.1
+	"fiops",		"",	0,	#-- item 4.1
+	"zen",			"",	0,	#-- item 4.1
+	"Kernel Default",	"",	1,
+
+	"TCP Congestion Control selection","",2,#-- Group 5
+	"westwood",		"",	0,	#-- item 5.1
+	"reno",			"",	0,	#-- item 5.1
+	"bic",			"",	0,	#-- item 5.1
+	"cubic",		"",	0,	#-- item 5.1
+	"highspeed",		"",	0,	#-- item 5.1
+	"hybla",		"",	0,	#-- item 5.1
+	"htcp",			"",	0,	#-- item 5.1
+	"vegas",		"",	0,	#-- item 5.1
+	"veno",			"",	0,	#-- item 5.1
+	"scalable",		"",	0,	#-- item 5.1
+	"lp",			"",	0,	#-- item 5.1
+	"yeah",			"",	0,	#-- item 5.1
+	"illinois",		"",	0,	#-- item 5.1
+	"Kernel Default",	"",	1,
+
+	"Cores 3 & 4: Maximum cpu clockrate","",	2,	#-- Group 1		
+	"2.26Ghz",		"",	0,	#-- item.1.1
+	"1.95Ghz",		"",	0,	#-- item.1.2
+	"1.72Ghz",		"",	0,	#-- item.1.3
+	"1.57Ghz",		"",	0,	#-- item.1.4
+	"1.49Ghz",		"",	0,	#-- item.1.5
+	"Kernel Default",	"",	1,
+
+	"Cores 3 & 4: Minimum cpu clockrate","",	2,	#-- Group 2		
+	"300Mhz",		"",	0,	#-- item 2.1
+	"345Mhz",		"",	0,	#-- item 2.2
+	"422Mhz",		"",	0,	#-- item 2.2
+	"653Mhz",		"",	0,	#-- item 2.2
+	"Kernel Default",	"",	1,
+
+	"Cores 3 & 4: Governor selection",	"",	2,	#-- Group 3
+	"optimax",		"",	0,	#-- item 3.1
+	"dancedance",		"",	0,	#-- item 3.2
+	"intelliactive",	"",	0,	#-- item 3.3
+	"intellidemand",	"",	0,	#-- item 3.4
+	"conservative",		"",	0,	#-- item 3.5
+	"ondemand",		"",	0,	#-- item 3.6
+	"interactive",		"",	0,	#-- item 3.7
+	"Kernel Default",	"",	1
+);
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.1") == "1"
+then
+    writetmpfile("maxkhz.prop", "maxkhz=2265600\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.1") == "2"
+then
+    writetmpfile("maxkhz.prop", "maxkhz=1958400\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.1") == "3"
+then
+    writetmpfile("maxkhz.prop", "maxkhz=1728000\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.1") == "4"
+then
+    writetmpfile("maxkhz.prop", "maxkhz=1574400\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.1") == "5"
+then
+    writetmpfile("maxkhz.prop", "maxkhz=1497600\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.1") == "6"
+then
+    writetmpfile("maxkhz.prop", "maxkhz=\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.2") == "1"
+then
+    writetmpfile("minkhz.prop", "minkhz=300000\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.2") == "2"
+then
+    writetmpfile("minkhz.prop", "minkhz=345600\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.2") == "3"
+then
+    writetmpfile("minkhz.prop", "minkhz=422400\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.2") == "4"
+then
+    writetmpfile("minkhz.prop", "minkhz=652800\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.2") == "5"
+then
+    writetmpfile("minkhz.prop", "minkhz=\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "1"
+then
+    writetmpfile("gov.prop", "gov=optimax\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "2"
+then
+    writetmpfile("gov.prop", "gov=dancedance\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "3"
+then
+    writetmpfile("gov.prop", "gov=intelliactive\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "4"
+then
+    writetmpfile("gov.prop", "gov=intellidemand\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "5"
+then
+    writetmpfile("gov.prop", "gov=conservative\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "6"
+then
+    writetmpfile("gov.prop", "gov=ondemand\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "7"
+then
+    writetmpfile("gov.prop", "gov=interactive\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.3") == "8"
+then
+    writetmpfile("gov.prop", "gov=\n");
+endif;
+
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "1"
+then
+    writetmpfile("scheduler.prop", "scheduler=noop\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "2"
+then
+    writetmpfile("scheduler.prop", "scheduler=deadline\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "3"
+then
+    writetmpfile("scheduler.prop", "scheduler=row\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "4"
+then
+    writetmpfile("scheduler.prop", "scheduler=cfq\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "5"
+then
+    writetmpfile("scheduler.prop", "scheduler=sio\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "6"
+then
+    writetmpfile("scheduler.prop", "scheduler=fiops\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "7"
+then
+    writetmpfile("scheduler.prop", "scheduler=zen\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.4") == "8"
+then
+    writetmpfile("scheduler.prop", "scheduler=\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "1"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=westwood\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "2"
+then
+    writetmpfile("tcpcong.prop",	"tcpcong=reno\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "3"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=bic\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "4"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=cubic\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "5"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=highspeed\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "6"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=hybla\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "7"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=htcp\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "8"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=vegas\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "9"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=veno\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "10"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=scalable\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "11"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=lp\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "12"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=yeah\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "13"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=illinois\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.5") == "13"
+then
+    writetmpfile("tcpcong.prop", "tcpcong=\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.6") == "1"
+then
+    writetmpfile("maxkhz2.prop", "maxkhz2=2265600\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.6") == "2"
+then
+    writetmpfile("maxkhz2.prop", "maxkhz2=1958400\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.6") == "3"
+then
+    writetmpfile("maxkhz2.prop", "maxkhz2=1728000\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.6") == "4"
+then
+    writetmpfile("maxkhz2.prop", "maxkhz2=1574400\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.6") == "5"
+then
+    writetmpfile("maxkhz2.prop", "maxkhz2=1497600\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.6") == "6"
+then
+    writetmpfile("maxkhz2.prop", "maxkhz2=\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.7") == "1"
+then
+    writetmpfile("minkhz2.prop", "minkhz2=300000\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.7") == "2"
+then
+    writetmpfile("minkhz2.prop", "minkhz2=345600\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.7") == "3"
+then
+    writetmpfile("minkhz2.prop", "minkhz2=422400\n");
+endif;
+
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.7") == "4"
+then
+    writetmpfile("minkhz2.prop", "minkhz2=652800\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.7") == "5"
+then
+    writetmpfile("minkhz2.prop", "minkhz2=\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "1"
+then
+    writetmpfile("gov2.prop", "gov2=optimax\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "2"
+then
+    writetmpfile("gov2.prop", "gov2=dancedance\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "3"
+then
+    writetmpfile("gov2.prop", "gov2=intelliactive\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "4"
+then
+    writetmpfile("gov2.prop", "gov2=intellidemand\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "5"
+then
+    writetmpfile("gov2.prop", "gov2=conservative\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "6"
+then
+    writetmpfile("gov2.prop", "gov2=ondemand\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "7"
+then
+    writetmpfile("gov2.prop", "gov2=interactive\n");
+endif;
+if
+	file_getprop("/tmp/aroma-data/deviceconfig.prop","selected.8") == "8"
+then
+    writetmpfile("gov2.prop", "gov2=\n");
+endif;
+textdialog(
+    "Selected Plain-Tweak configuration",
+	"Max CPU Clock:\n\tCores 1 & 2: "+prop("maxkhz.prop", "maxkhz")+
+	"\n\tCores 3 & 4: "+prop("maxkhz2.prop", "maxkhz2")+"\n"+
+	"Min CPU Clock\n\tCores 1 & 2: "+prop("minkhz.prop", "minkhz")+
+	"\n\tCores 3 & 4: "+prop("minkhz2.prop", "minkhz2")+"\n\n"+
+	"IO Scheduler: "+prop("scheduler.prop", "scheduler")+"\n\n"+
+	"Governor:\n\tCores 1 & 2: "+prop("gov.prop", "gov")+
+	"\n\tCores 3 & 4: "+prop("gov2.prop", "gov2")+"\n\n"+
+	"TCP Congestion Control: "+prop("tcpcong.prop", "tcpcong")+"\n\n\n"+
+	"<@center>Unset values will revert to kernel default</@>"
+);
+endif;
+
